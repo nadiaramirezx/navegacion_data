@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, Button, Alert } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { View, Text, TextInput, Button, Alert } from "react-native";  //construir interfaz el usuario
+import AsyncStorage from "@react-native-async-storage/async-storage"; //API para almacenar datos persistentes
 
 const StorageExample = () => {
-  const [tempData, setTempData] = useState("");
-  const [data, setData] = useState("");
-  const [storedData, setstoredData] = useState("");
+  const [tempData, setTempData] = useState(""); //almacena dato ingresado antes de guardarlo en AsyncS
+  const [data, setData] = useState(""); //guarda valor actual del TextInput
+  const [storedData, setstoredData] = useState(""); //almacena dato recuperado de AsyncS
 
   // Guardar datos en AsyncStorage
   const saveData = async () => {
@@ -21,9 +21,9 @@ const StorageExample = () => {
   // Cargar datos desde AsyncStorage
   const loadData = async () => {
     try {
-      const value = await AsyncStorage.getItem("userData");
+      const value = await AsyncStorage.getItem("userData"); //Recupera el valor almacenado
       if (value !== null) {
-        setstoredData(value);
+        setstoredData(value); // Actualiza el estado storedData con el valor recuperado
       }
     } catch (error) {
       Alert.alert("Error", "No se pudo cargar el nombre.");
@@ -64,3 +64,6 @@ const StorageExample = () => {
 };
 
 export default StorageExample;
+
+//Cargar Dato: recupera el dato almacenado y se muestra en la interfaz.
+//
